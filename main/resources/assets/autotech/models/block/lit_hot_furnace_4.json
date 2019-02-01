@@ -1,0 +1,11 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "up": "autotech:blocks/hot_furnace_4_top",
+        "down": "autotech:blocks/hot_furnace_4_top",
+        "north": "autotech:blocks/hot_furnace_4_front_on",
+        "east": "autotech:blocks/hot_furnace_4_side",
+        "south": "autotech:blocks/hot_furnace_4_side",
+        "west": "autotech:blocks/hot_furnace_4_side"
+    }
+}

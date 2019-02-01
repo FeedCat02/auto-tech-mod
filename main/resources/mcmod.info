@@ -1,0 +1,16 @@
+[
+{
+  "modid": "autotech",
+  "name": "AutoTech",
+  "description": "Some blocks and items with different mechanics",
+  "version": "1.0.0 BETA",
+  "mcversion": "1.12.2",
+  "url": "https://www.youtube.com/c/FoodDog",
+  "updateUrl": "",
+  "authorList": ["Food77"],
+  "credits": "ME",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

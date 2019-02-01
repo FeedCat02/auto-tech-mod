@@ -1,0 +1,59 @@
+{
+    "variants": 
+    {
+        "burning=false,facing=north,hot=5": {"model":"autotech:hot_furnace_5"},
+        "burning=false,facing=east,hot=5": {"model":"autotech:hot_furnace_5", "y":90},
+        "burning=false,facing=south,hot=5": {"model":"autotech:hot_furnace_5", "y":180},
+        "burning=false,facing=west,hot=5": {"model":"autotech:hot_furnace_5", "y":270},
+        "burning=true,facing=north,hot=5": {"model":"autotech:lit_hot_furnace_5"},
+        "burning=true,facing=east,hot=5": {"model":"autotech:lit_hot_furnace_5", "y":90},
+        "burning=true,facing=south,hot=5": {"model":"autotech:lit_hot_furnace_5", "y":180},
+        "burning=true,facing=west,hot=5": {"model":"autotech:lit_hot_furnace_5", "y":270},
+        
+        "burning=false,facing=north,hot=4": {"model":"autotech:hot_furnace_4"},
+        "burning=false,facing=east,hot=4": {"model":"autotech:hot_furnace_4", "y":90},
+        "burning=false,facing=south,hot=4": {"model":"autotech:hot_furnace_4", "y":180},
+        "burning=false,facing=west,hot=4": {"model":"autotech:hot_furnace_4", "y":270},
+        "burning=true,facing=north,hot=4": {"model":"autotech:lit_hot_furnace_4"},
+        "burning=true,facing=east,hot=4": {"model":"autotech:lit_hot_furnace_4", "y":90},
+        "burning=true,facing=south,hot=4": {"model":"autotech:lit_hot_furnace_4", "y":180},
+        "burning=true,facing=west,hot=4": {"model":"autotech:lit_hot_furnace_4", "y":270},
+        
+        "burning=false,facing=north,hot=3": {"model":"autotech:hot_furnace_3"},
+        "burning=false,facing=east,hot=3": {"model":"autotech:hot_furnace_3", "y":90},
+        "burning=false,facing=south,hot=3": {"model":"autotech:hot_furnace_3", "y":180},
+        "burning=false,facing=west,hot=3": {"model":"autotech:hot_furnace_3", "y":270},
+        "burning=true,facing=north,hot=3": {"model":"autotech:lit_hot_furnace_3"},
+        "burning=true,facing=east,hot=3": {"model":"autotech:lit_hot_furnace_3", "y":90},
+        "burning=true,facing=south,hot=3": {"model":"autotech:lit_hot_furnace_3", "y":180},
+        "burning=true,facing=west,hot=3": {"model":"autotech:lit_hot_furnace_3", "y":270},
+        
+        "burning=false,facing=north,hot=2": {"model":"autotech:hot_furnace_2"},
+        "burning=false,facing=east,hot=2": {"model":"autotech:hot_furnace_2", "y":90},
+        "burning=false,facing=south,hot=2": {"model":"autotech:hot_furnace_2", "y":180},
+        "burning=false,facing=west,hot=2": {"model":"autotech:hot_furnace_2", "y":270},
+        "burning=true,facing=north,hot=2": {"model":"autotech:lit_hot_furnace_2"},
+        "burning=true,facing=east,hot=2": {"model":"autotech:lit_hot_furnace_2", "y":90},
+        "burning=true,facing=south,hot=2": {"model":"autotech:lit_hot_furnace_2", "y":180},
+        "burning=true,facing=west,hot=2": {"model":"autotech:lit_hot_furnace_2", "y":270},
+        
+        "burning=false,facing=north,hot=1": {"model":"autotech:hot_furnace_1"},
+        "burning=false,facing=east,hot=1": {"model":"autotech:hot_furnace_1", "y":90},
+        "burning=false,facing=south,hot=1": {"model":"autotech:hot_furnace_1", "y":180},
+        "burning=false,facing=west,hot=1": {"model":"autotech:hot_furnace_1", "y":270},
+        "burning=true,facing=north,hot=1": {"model":"autotech:lit_hot_furnace_1"},
+        "burning=true,facing=east,hot=1": {"model":"autotech:lit_hot_furnace_1", "y":90},
+        "burning=true,facing=south,hot=1": {"model":"autotech:lit_hot_furnace_1", "y":180},
+        "burning=true,facing=west,hot=1": {"model":"autotech:lit_hot_furnace_1", "y":270},
+        
+        "burning=false,facing=north,hot=0": {"model":"autotech:cold_furnace"},
+        "burning=false,facing=east,hot=0": {"model":"autotech:cold_furnace", "y":90},
+        "burning=false,facing=south,hot=0": {"model":"autotech:cold_furnace", "y":180},
+        "burning=false,facing=west,hot=0": {"model":"autotech:cold_furnace", "y":270},
+        "burning=true,facing=north,hot=0": {"model":"autotech:cold_furnace"},
+        "burning=true,facing=east,hot=0": {"model":"autotech:cold_furnace", "y":90},
+        "burning=true,facing=south,hot=0": {"model":"autotech:cold_furnace", "y":180},
+        "burning=true,facing=west,hot=0": {"model":"autotech:cold_furnace", "y":270}
+
+    }
+}
