@@ -38,6 +38,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
@@ -450,7 +451,7 @@ public class TileEntityHotFurnace extends TileEntity implements ITickable, ISide
         }
         else
         {
-            int burnTime = net.minecraftforge.event.ForgeEventFactory.getItemBurnTime(fuel);
+            int burnTime = MathHelper.roundUp((int)(ForgeEventFactory.getItemBurnTime(fuel)*7.5*ConfigHandler.FUEL_EFFICIENTCY_HOT_FURNACE),10)/10;
             if (burnTime >= 0) return burnTime;
             else {
             	Item item = fuel.getItem();

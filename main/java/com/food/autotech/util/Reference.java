@@ -9,7 +9,7 @@ public class Reference
 {
 	public static final String MOD_ID = "autotech";
 	public static final String NAME = "AutoTech";
-	public static final String VERSION = "1.0.3 BETA";
+	public static final String VERSION = "1.0.4 BETA";
 	public static final String ACCEPTED_VERSIONS = "[1.12.2]";
 	public static final String CLIENT_PROXY_CLASS = "com.food.autotech.proxy.ClientProxy";
 	public static final String COMMON_PROXY_CLASS = "com.food.autotech.proxy.CommonProxy";
