@@ -2,34 +2,22 @@ package com.food.autotech.init.tileentity;
 
 import java.util.ArrayList;
 
-
 import com.food.autotech.init.blocks.HotFurnace;
 import com.food.autotech.util.Reference;
 import com.food.autotech.util.handlers.ConfigHandler;
 
-import akka.actor.FSM.State;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDynamicLiquid;
-import net.minecraft.block.BlockFurnace;
-import net.minecraft.block.BlockSand;
-import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.inventory.GuiFurnace;
-import net.minecraft.client.particle.ParticleDrip.LavaFactory;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBoat;
+import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -50,17 +38,9 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelFluid.FluidLoader;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.event.terraingen.BiomeEvent.GetWaterColor;
-import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import scala.reflect.internal.util.Position;
 
 public class TileEntityHotFurnace extends TileEntity implements ITickable, ISidedInventory
 {
@@ -332,8 +312,8 @@ public class TileEntityHotFurnace extends TileEntity implements ITickable, ISide
 		{
 			if(canSmelt()&&isItemFuel(this.itemStacks.get(1)))
 			{
-				this.totalBurnTime = getItemBurnTime(this.itemStacks.get(1), world, this);
-				this.burnTime = getItemBurnTime(this.itemStacks.get(1), world, this);
+				this.totalBurnTime = getItemBurnTime(this.itemStacks.get(1));
+				this.burnTime = getItemBurnTime(this.itemStacks.get(1));
 				ItemStack itemstack = this.itemStacks.get(1);
 				if (!itemstack.isEmpty())
                 {
@@ -462,54 +442,107 @@ public class TileEntityHotFurnace extends TileEntity implements ITickable, ISide
             }
         }
     }
-	public static int getItemBurnTime(ItemStack fuel, World world, TileEntityHotFurnace tileentity)
+	public static int getItemBurnTime(ItemStack fuel)
 	{
-		int burn = 0;
-		if (!fuel.isEmpty());
-			Item item = fuel.getItem();
-			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-			{
-				Block block = Block.getBlockFromItem(item);
-				if (block == Blocks.WOODEN_SLAB) burn = 113;
-				else if(block.getDefaultState().getMaterial() == Material.WOOD) burn = 225;
-				else if(block == Blocks.COAL_BLOCK) burn = 12000;
-				
-			}
-			else if(item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName())) burn = 150;
-			else if(item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName())) burn = 150;
-			else if(item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName())) burn = 150;
-			else if(item == Items.STICK) burn = 75;
-			else if(item == Items.COAL) burn = 1200;
-			else if(item == Items.LAVA_BUCKET) burn = 15000;
-			else if(item == Item.getItemFromBlock(Blocks.SAPLING)) burn = 75;
-			else if(item == Items.BLAZE_ROD) burn = 1800;
-			else burn = (int)(MathHelper.roundUp((int) (ForgeEventFactory.getItemBurnTime(fuel)*100), 1)/150);
-		burn*=ConfigHandler.FUEL_EFFICIENTCY_HOT_FURNACE;
-		return burn;	
+		if (fuel.isEmpty())
+        {
+            return 0;
+        }
+        else
+        {
+            int burnTime = net.minecraftforge.event.ForgeEventFactory.getItemBurnTime(fuel);
+            if (burnTime >= 0) return burnTime;
+            else {
+            	Item item = fuel.getItem();
+            	if (item == Item.getItemFromBlock(Blocks.WOODEN_SLAB))
+            	{
+            		burnTime = 113;
+            	}
+            	else if (item == Item.getItemFromBlock(Blocks.WOOL))
+            	{
+            		burnTime = 75;
+            	}
+            	else if (item == Item.getItemFromBlock(Blocks.CARPET))
+            	{
+            		burnTime = 51;
+            	}
+            	else if (item == Item.getItemFromBlock(Blocks.LADDER))
+            	{
+            		burnTime = 225;
+            	}
+            	else if (item == Item.getItemFromBlock(Blocks.WOODEN_BUTTON))
+            	{
+            		burnTime = 75;
+            	}
+            	else if (Block.getBlockFromItem(item).getDefaultState().getMaterial() == Material.WOOD)
+            	{
+            		burnTime = 225;
+            	}
+            	else if (item == Item.getItemFromBlock(Blocks.COAL_BLOCK))
+            	{
+            		burnTime = 12000;
+            	}
+            	else if (item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName()))
+            	{
+            		burnTime = 150;
+            	}	
+            	else if (item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName()))
+            	{
+            		burnTime = 150;
+            	}
+            	else if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName()))
+            	{
+            		burnTime = 150;
+            	}
+            	else if (item == Items.STICK)
+            	{
+            		burnTime = 75;
+            	}
+            	else if (item != Items.BOW && item != Items.FISHING_ROD)
+            	{
+                	if (item == Items.SIGN)
+                	{
+                		burnTime = 150;
+                	}
+                	else if (item == Items.COAL)
+                	{
+                		burnTime = 1200;
+                	}
+                	else if (item == Items.LAVA_BUCKET)
+                	{
+                		burnTime = 15000;
+                	}
+                	else if (item != Item.getItemFromBlock(Blocks.SAPLING) && item != Items.BOWL)
+                	{
+                    	if (item == Items.BLAZE_ROD)
+                    	{
+                    		burnTime = 1800;
+                    	}
+                    	else if (item instanceof ItemDoor && item != Items.IRON_DOOR)
+                    	{
+                    		burnTime = 150;
+                    	}
+                    	else
+                    	{
+                    		burnTime = item instanceof ItemBoat ? 300 : 0;
+                    	}
+                	}
+                	else
+                	{
+                		burnTime = 75;
+                	}
+            	}
+            	else
+            	{
+            		burnTime = 225;
+            	}
+            }
+            return (int)(MathHelper.roundUp((int) (burnTime*10*ConfigHandler.FUEL_EFFICIENTCY_HOT_FURNACE), 10)/10);
+        }		
 	}
 	public static boolean isItemFuel(ItemStack fuel)
 	{
-		int burn = 0;
-		if (!fuel.isEmpty());
-			Item item = fuel.getItem();
-			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-			{
-				Block block = Block.getBlockFromItem(item);
-				if (block == Blocks.WOODEN_SLAB) burn = 113;
-				else if(block.getDefaultState().getMaterial() == Material.WOOD) burn = 225;
-				else if(block == Blocks.COAL_BLOCK) burn = 12000;
-				
-			}
-			else if(item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName())) burn = 150;
-			else if(item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName())) burn = 150;
-			else if(item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName())) burn = 150;
-			else if(item == Items.STICK) burn = 75;
-			else if(item == Items.COAL) burn = 1200;
-			else if(item == Items.LAVA_BUCKET) burn = 15000;
-			else if(item == Item.getItemFromBlock(Blocks.SAPLING)) burn = 75;
-			else if(item == Items.BLAZE_ROD) burn = 1800;
-			else burn = (int)(MathHelper.roundUp((int) (ForgeEventFactory.getItemBurnTime(fuel)*100), 1)/150);
-		return burn > 0;
+		return getItemBurnTime(fuel) > 0;
 	}
 	
     public boolean isUsableByPlayer(EntityPlayer player)

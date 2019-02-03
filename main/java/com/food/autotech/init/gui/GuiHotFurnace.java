@@ -62,7 +62,6 @@ public class GuiHotFurnace extends GuiContainer
     }
 	private int getCookProgressScaled(int pixels)
     {
-		System.out.println(new int[] {this.tileentity.getField(2),this.tileentity.getField(3)});
         int i = this.tileentity.getField(2);
         int j = this.tileentity.getField(3);
         return j != 0 && i != 0 ? i * pixels / j : 0;
