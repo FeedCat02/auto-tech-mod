@@ -38,13 +38,12 @@ public class ConfigHandler
 		category = "Heat";
 		config.addCustomCategoryComment(category, "Global heat control");
 		HEAT_SOURCES = config.getStringList("Heat Source List", category, HEAT_SOURCES, "Enter like this: Block_ID;Heat_Change(Any float);Max_Heat(Set to null for no max);Min_Heat(Set to null for no min);Block_ID(Of what you want it to be turned into);Chance_It_Changes(From 0-1)\n");
-		BIOME_HEAT_SOURCES = config.getStringList("Biome Heat List", category, BIOME_HEAT_SOURCES, "Dunno");
 		category = "Heat Furnace";
 		config.addCustomCategoryComment(category, "Setting for the heat furnace");
-		MAX_HEAT_HOT_FURANCE = config.getFloat("Max Heat", category, MAX_HEAT_HOT_FURANCE, 16000, 20, "Heat when it melts");
-		HEAT_CONSUMPTION_TIME_HOT_FURNACE = config.getInt("Heat Souce Consumption", category, HEAT_CONSUMPTION_TIME_HOT_FURNACE, 16000, 20, "Time before it tries to consume a heat source");
-		FUEL_EFFICIENTCY_HOT_FURNACE = config.getFloat("Fuel Efficientcy", category, FUEL_EFFICIENTCY_HOT_FURNACE, 16000, 20, "How much more efficient the fuel is");
-		QUICKEST_COOK_TIME_HOT_FURNACE = config.getInt("Cook Time", category, QUICKEST_COOK_TIME_HOT_FURNACE, 16000, 20, "The time it takes to smelt 1 item on max heat");
+		MAX_HEAT_HOT_FURANCE = config.getFloat("Max Heat", category, MAX_HEAT_HOT_FURANCE, 0, 16000, "Heat when it melts");
+		HEAT_CONSUMPTION_TIME_HOT_FURNACE = config.getInt("Heat Souce Consumption", category, HEAT_CONSUMPTION_TIME_HOT_FURNACE, 0, 16000, "Time before it tries to consume a heat source");
+		FUEL_EFFICIENTCY_HOT_FURNACE = config.getFloat("Fuel Efficientcy", category, FUEL_EFFICIENTCY_HOT_FURNACE, 0, 16000, "How much more efficient the fuel is");
+		QUICKEST_COOK_TIME_HOT_FURNACE = config.getInt("Cook Time", category, QUICKEST_COOK_TIME_HOT_FURNACE, 0, 16000, "The time it takes to smelt 1 item on max heat");
 		
 		config.save();
 	}

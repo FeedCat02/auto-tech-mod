@@ -186,8 +186,7 @@ public class HotFurnace extends BlockBase implements ITileEntityProvider, TOPInf
         if (te instanceof TileEntityHotFurnace) {
         	TileEntityHotFurnace dataTileEntity = (TileEntityHotFurnace) te; 
             probeInfo.horizontal()
-                    .item(new ItemStack(Items.LAVA_BUCKET))
-                    .progress(dataTileEntity.getHeat(), 900, probeInfo.defaultProgressStyle().filledColor(0xffc80000).alternateFilledColor(0xffc80000).suffix("°C"));
+                    .progress(dataTileEntity.getHeat(), 800, probeInfo.defaultProgressStyle().filledColor(0xffb80000).alternateFilledColor(0xffb80000).suffix("C"));
         }
 	}
 

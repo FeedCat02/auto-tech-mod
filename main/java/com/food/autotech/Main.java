@@ -50,7 +50,6 @@ public class Main {
 	public static void PostInit(FMLPostInitializationEvent event)
 	{
 		Reference.heatSources=CustomRecipeHandler.addRecipes();
-		System.out.println(Reference.heatSources);
 	}
 
 

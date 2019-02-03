@@ -1,6 +1,7 @@
 {
     "parent": "block/orientable",
     "textures": {
+	    "particle": "autotech:blocks/cold_furnace_front",
         "up": "autotech:blocks/cold_furnace_top",
         "down": "autotech:blocks/cold_furnace_top",
         "north": "autotech:blocks/cold_furnace_front",
